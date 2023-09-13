@@ -3,14 +3,22 @@
 
 <head>
     <title>Login to your KOLO account</title>
+    <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
+    <?php
+    require_once "top-nav.php";
+    ?>
+    <br /><br />
     <div class="container">
         <h2>Login Form</h2>
         <?php
         if (isset($_GET['err'])) {
             echo "<h4 style='color: red'>Invalid email or password<h4>";
+        }
+        if (isset($_GET['success'])) {
+            echo "<h4 style='color: green'>Registration successful, please login to continue.<h4>";
         }
         ?>
         <form method="post" action="auth.php">
