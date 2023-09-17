@@ -7,9 +7,7 @@
 </head>
 
 <body>
-    <?php
-    require_once "top-nav.php";
-    ?>
+    
     <br /><br />
     <div class="container">
         <h2>Login Form</h2>

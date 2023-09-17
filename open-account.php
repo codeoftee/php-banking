@@ -11,7 +11,6 @@
 
 <body>
     <?php
-    require_once "top-nav.php";
 
     if (isset($_GET['err'])) {
         $error = $_GET['err'];

@@ -12,7 +12,7 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 
-function generate_account($length = 6)
+function generate_account_number($length = 6)
 {
     $prefix = "4005";
     $key = '';

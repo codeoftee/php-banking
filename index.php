@@ -1,3 +1,17 @@
+<?php
+session_start();
+require_once "db.php";
+$logged_in = false;
+// check login
+if (isset($_SESSION['id'])) {
+    $logged_in = true;
+}
+if (isset($_COOKIE['id'])) {
+    $logged_in = true;
+    $_SESSION['id'] = $_COOKIE['id'];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

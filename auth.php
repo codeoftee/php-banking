@@ -19,8 +19,10 @@ if (isset($_POST['registration'])) {
     }
     $hashed_password = hash('sha256', $password);
 
-    $sql = "INSERT INTO users (firstname, lastname, password, email, phone, bvn, balance)
-    VALUES('$firstname', '$lastname', '$hashed_password', '$email', '$phone', '$bvn', 0)";
+    $account_number = generate_account_number();
+
+    $sql = "INSERT INTO users (firstname, lastname, password, email, phone, bvn, balance, account_number)
+    VALUES('$firstname', '$lastname', '$hashed_password', '$email', '$phone', '$bvn', 0, '$account_number')";
 
     try {
         // use exec() because no results are returned
@@ -56,7 +58,6 @@ if (isset($_POST['login'])) {
                 $_SESSION['pw'] = $user['password'];
                 // set cookies for 2 days
                 setcookie("user_id", $user['id'], time() + (86400 * 2), "/");
-                setcookie("username", $user['username'], time() + (86400 * 2), "/");
                 // redirect back to homepage
                 header('location: account.php');
             }
