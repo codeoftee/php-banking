@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2023 at 09:37 AM
+-- Generation Time: Sep 18, 2023 at 10:16 AM
 -- Server version: 8.1.0
 -- PHP Version: 8.4.0-dev
 
@@ -29,12 +29,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `transaction_history` (
   `id` int NOT NULL,
-  `sender` varchar(10) DEFAULT NULL,
-  `receiver` varchar(10) DEFAULT NULL,
+  `sender` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `receiver` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `amount` decimal(10,2) DEFAULT NULL,
   `sent_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `transaction_status` varchar(20) DEFAULT NULL,
-  `ref` varchar(30) DEFAULT NULL
+  `transaction_status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ref` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -42,7 +42,10 @@ CREATE TABLE `transaction_history` (
 --
 
 INSERT INTO `transaction_history` (`id`, `sender`, `receiver`, `amount`, `sent_time`, `transaction_status`, `ref`) VALUES
-(1, '4005588676', '4005588677', '2000.00', '2023-09-17 22:30:33', 'successful', 'urgent 2k');
+(1, '4005588676', '4005588677', '2000.00', '2023-09-17 22:30:33', 'successful', 'urgent 2k'),
+(2, '4005588677', '4005588676', '1000.00', '2023-09-18 09:44:40', 'successful', 'payment'),
+(3, '4005588677', NULL, '0.00', '2023-09-18 09:55:41', 'successful', ''),
+(4, '4005588677', NULL, '444.00', '2023-09-18 09:56:00', 'successful', '');
 
 -- --------------------------------------------------------
 
@@ -52,16 +55,16 @@ INSERT INTO `transaction_history` (`id`, `sender`, `receiver`, `amount`, `sent_t
 
 CREATE TABLE `users` (
   `id` int NOT NULL,
-  `firstname` varchar(50) DEFAULT NULL,
-  `lastname` varchar(50) DEFAULT NULL,
-  `password` varchar(220) DEFAULT NULL,
-  `email` varchar(200) DEFAULT NULL,
-  `phone` varchar(15) DEFAULT NULL,
-  `account_number` varchar(10) DEFAULT NULL,
+  `firstname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lastname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(220) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `account_number` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `balance` decimal(10,2) NOT NULL,
-  `bvn` varchar(11) DEFAULT NULL,
+  `bvn` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `reg_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `profile_pic` varchar(200) DEFAULT NULL
+  `profile_pic` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -69,8 +72,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `password`, `email`, `phone`, `account_number`, `balance`, `bvn`, `reg_date`, `profile_pic`) VALUES
-(1, 'Ibrahim', 'Oladele', '37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578', 'ibro@test.com', '09099889989', '4005588677', '2000.00', '5663777676', '2023-09-13 01:31:54', NULL),
-(2, 'Baba', 'Tee', '37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578', 'test@test.com', '08108987644', '4005588676', '14000.00', '98765456789', '2023-09-17 22:25:23', NULL);
+(1, 'Ibrahim', 'Oladele', '37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578', 'ibro@test.com', '09099889989', '4005588677', '556.00', '5663777676', '2023-09-13 01:31:54', NULL),
+(2, 'Baba', 'Tee', '37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578', 'test@test.com', '08108987644', '4005588676', '15000.00', '98765456789', '2023-09-17 22:25:23', NULL);
 
 --
 -- Indexes for dumped tables
@@ -96,7 +99,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `transaction_history`
 --
 ALTER TABLE `transaction_history`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
